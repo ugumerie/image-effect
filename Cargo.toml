@@ -1,0 +1,22 @@
+[package]
+name = "rust-image-effects"
+version = "0.1.0"
+edition = "2021"
+
+#this table allows other languages to call rust functions - produces a crate (library) with support for other libs
+#
+[lib]
+crate-type = ['cdylib']
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+#wasm-bindgen - direct binding of JS and rust
+[dependencies]
+wasm-bindgen = "0.2.82"
+base64 = "0.13.0"
+image = "0.23.14" #use this version in order not to cause errors
+
+# web-sys is a heavy file we only need specific features like console.
+# this approach [dependencies.web-sys] helps us to partially importing the features we need from a crate 
+[dependencies.web-sys]
+version = "0.3.59"
+features = ["console"]
